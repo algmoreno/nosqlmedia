@@ -31,7 +31,6 @@ const userController = {
   },
 
   createUser({ body }, res) {
-    console.log('hello')
     User.create(body)
       .then(userData => res.json(userData))
       .catch(err => res.json(err));

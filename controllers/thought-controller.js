@@ -30,9 +30,23 @@ const thoughtController= {
       });
   },
 
-  createThought({ body }, res) {
+  createThought({ params, body }, res) {
+    console.log(body)
     Thought.create(body)
-      .then(thoughtData => res.json(thoughtData))
+      .then(({ _id }) => {
+        return User.findOneAndUpdate(
+          { _id: body.userId },
+          { $push: { thoughts: _id } },
+          { new: true }
+        );
+      })
+      .then(thoughtData => {
+        if (!thoughtData) {
+          res.status(404).json({ message: 'No thought found with this id!' });
+          return;
+        }
+        res.json(thoughtData);
+      })
       .catch(err => res.json(err));
   },
 
