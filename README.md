@@ -10,5 +10,8 @@ To run this application the following are required:
   -Express.js
   -Mongoose.js
 
+## Walkthrough
+https://drive.google.com/file/d/1JP_iGjLH0Fldd-mC8mf_mFxC7h9PoecI/view 
+
 ## Github 
 https://github.com/algmoreno/nosqlmedia 
